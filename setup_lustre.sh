@@ -1,4 +1,4 @@
-sh -c 'cat >/etc/yum.repos.d/lustre.repo' <<EOF
+cat <<EOM >/etc/yum.repos.d/lustre.repo 
 [lustre-server]
 name=CentOS-$releasever - Lustre
 baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-feature-release/el7/server/
@@ -13,7 +13,9 @@ gpgcheck=0
 name=CentOS-$releasever - Lustre
 baseurl=https://downloads.hpdd.intel.com/public/lustre/latest-feature-release/el7/client/
 gpgcheck=0
-EOF
+EOM
+
+
 
 
 yum install -y e2fsprogs

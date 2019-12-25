@@ -3,13 +3,15 @@ write_files:
   - owner: root:root
     path: /opt/setup_lustre_client.sh
     content: |
+      wget -O /tmp/lustre-client-modules-5.0.0-1027-azure_2.13.0-1_amd64.deb http://ccsdatarepo.westus.cloudapp.azure.com/data/lustre_clients_debs/5.0.0-1027-azure/lustre-client-modules-5.0.0-1027-azure_2.13.0-1_amd64.deb
+      wget -O /tmp/lustre-client-utils_2.13.0-1_amd64.deb http://ccsdatarepo.westus.cloudapp.azure.com/data/lustre_clients_debs/5.0.0-1027-azure/lustre-client-utils_2.13.0-1_amd64.deb
 
-  - owner: root:root
-    path: /opt/setup_mdt.sh
-    content: |
-      sudo mkdir /lustre-mdt0
-      echo "/dev/sdc                                /lustre-mdt0               lustre  defaults,_netdev        0 0" | sudo tee -a /etc/fstab
-      sudo mount /dev/sdc
+      apt install -y /tmp/lustre-client-modules-5.0.0-1027-azure_2.13.0-1_amd64.deb
+      apt install -y /tmp/lustre-client-utils_2.13.0-1_amd64.deb
+
+      mkdir /lustre
+      echo "192.168.100.1@tcp:/lustrefs                                /lustre               lustre  defaults,_netdev        0 0" | tee -a /etc/fstab
+      mount /lustre
+
 runcmd:
-  - bash /opt/setup_lustre.sh
-  - reboot 
+  - bash /opt/setup_lustre_client.sh

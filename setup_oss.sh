@@ -1,6 +1,6 @@
-mkfs.lustre --fsname=lustrefs --mgsnode=192.168.100.1@tcp --ost --index=0 /dev/sdc
-mkfs.lustre --fsname=lustrefs --mgsnode=192.168.100.1@tcp --ost --index=1 /dev/sdd
-mkfs.lustre --fsname=lustrefs --mgsnode=192.168.100.1@tcp --ost --index=2 /dev/sde
+mkfs.lustre --fsname=lustrefs --mgsnode=192.168.100.1@tcp --ost --index=12 /dev/sdc
+mkfs.lustre --fsname=lustrefs --mgsnode=192.168.100.1@tcp --ost --index=13 /dev/sdd
+mkfs.lustre --fsname=lustrefs --mgsnode=192.168.100.1@tcp --ost --index=14 /dev/sde
 
 mkdir /lustre-oss01
 mkdir /lustre-oss02
