@@ -12,6 +12,11 @@ write_files:
       mkdir /lustre
       echo "192.168.100.1@tcp:/lustrefs                                /lustre               lustre  defaults,_netdev        0 0" | tee -a /etc/fstab
       mount /lustre
+      apt update
+      apt install -y openmpi-bin libopenmpi-dev git nfs-common
+      mkdir /nfsdata
+      echo "192.168.0.14:/data                                /nfsdata               nfs  defaults,_netdev        0 0" | tee -a /etc/fstab
+
 
 runcmd:
   - bash /opt/setup_lustre_client.sh
